@@ -38,7 +38,10 @@ let personas = [
 ];
 
 console.log("After");
-// forma vieja de escribir las funciones
+
+/*****************************************
+ * forma vieja de escribir las funciones *
+ *****************************************/
 // function agregarMayoriaDeEdad(persona) {
 //   persona = {
 //     ...persona,
@@ -47,9 +50,11 @@ console.log("After");
 //   return persona;
 // }
 
-// forma nueva de escribir las funciones (arrow function)
-// se quita la palabra function, se quita el
-// nombre de la funcion y se agrega una flecha
+/**********************************************************
+ * forma nueva de escribir las funciones (arrow function) *
+ * se quita la palabra function, se quita el              *
+ * nombre de la funcion y se agrega una flecha            *
+ **********************************************************/
 // let agregarMayoriaDeEdad = (persona) => {
 //   persona = {
 //     ...persona,
@@ -58,39 +63,44 @@ console.log("After");
 //   return persona;
 // };
 
-// Bucle for
+/*************
+ * Bucle for *
+ *************/
 // for (let i = 0; i < personas.length; i++) {
 //   personas[i] = { ...personas[i], esMayor: true };
 //   console.log(personas[i]);
 // }
 
-// utilizando forEach
-personas.forEach((persona, i, personas) => {
-  personas[i] = {
-    ...persona,
-    esMayor: null,
-  };
-});
-
-// utilizando map
+/******************
+ * utilizando map *
+ ******************/
 let personas1 = personas.map((persona) => {
   //     (persona = {
   //       ...persona,
   //       esMayor: null,
   //     })
 
-  // usando operador ternario v1.0
-  persona.edad >= 18
-    ? (persona = { ...persona, esMayor: true })
-    : (persona = { ...persona, esMayor: false });
+  /* # usando operador ternario v1.0 # */
+  // persona.edad >= 18
+  //   ? (persona = { ...persona, esMayor: true })
+  //   : (persona = { ...persona, esMayor: false });
 
-  // usando operador ternario v2.0
-  //   persona = {
-  //     ...persona,
-  //     esMayor: persona.edad >= 18 ? true : false,
-  //   };
-
+  /* # usando operador ternario v2.0 # */
+  persona = {
+    ...persona,
+    esMayor: persona.edad >= 18 ? true : false,
+  };
   return persona;
+});
+
+/**********************
+ * utilizando forEach *
+ **********************/
+personas.forEach((persona, i, personas) => {
+  personas[i] = {
+    ...persona,
+    esMayor: persona.edad >= 18 ? true : false,
+  };
 });
 
 console.log(personas);
